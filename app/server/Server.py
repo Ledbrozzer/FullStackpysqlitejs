@@ -1,18 +1,19 @@
 # python -m venv env # env\Scripts\activate # python Server.py
 #pip install flask sqlalchemy pandas openpyxl
-
+#1
+#1
+#http://192.168:5000
 # app/server/Server.py
-from flask import Flask, request, jsonify, session as flask_session, redirect, url_for
+from flask import Flask, request, jsonify, render_template, session as flask_session, redirect, url_for, send_from_directory
 import socket
-
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Servidor Local Configurado com Sucesso!"
+    return render_template('templates/index.html') # Renderiza a página inicial
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5010, debug=True)
 
 def get_private_ip():
     hostname = socket.gethostname()
