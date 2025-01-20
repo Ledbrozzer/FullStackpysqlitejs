@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import extract
 from datetime import datetime
 from database import engine, autenticar_usuario, User, Abastecimento, Veiculo, MediaKm  # Certifique-se de que 'database.py' está no diretório 'server'
+import socket
 
 app = Flask(__name__)
 app.secret_key = ''
@@ -365,5 +366,18 @@ def cadastrar_abastecimento():
         session.rollback()
         return jsonify({"error": f"Erro ao cadastrar abastecimento: {str(e)}"}), 500
 
+# Função para obter IP privado
+def get_private_ip():
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    return local_ip
+
+@app.before_request
+def limit_remote_addr():
+    allowed_ips = ['192.168.', '10.', '172.16.', '172.31.']  # Subfaixas IPv4 privadas
+    client_ip = request.remote_addr
+    if not any(client_ip.startswith(ip) for ip in allowed_ips):
+        return "Acesso não autorizado: você não está na rede Wi-Fi privada", 403
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=, debug=True)
+    app.run(host='0.0.0.0', port=5010, debug=True)
