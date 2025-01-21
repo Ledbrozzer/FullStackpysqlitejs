@@ -1,0 +1,276 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+}
+p {
+    color: #666;
+}
+/*LaterlBar*/
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sidebar h2, .sidebar button {
+    padding: 8px 8px 8px 32px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar button {
+    background-color: #111;
+    border: none;
+    cursor: pointer;
+}
+.sidebar button:hover {
+    color: #f1f1f1;
+}
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.open-sidebar-btn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+}
+/*Modal*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-modal:hover, .close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.hist-vehicle-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.hist-vehicle-btn:hover {
+    background-color: #0056b3;
+}
+.resultado-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.modal-content h3 {
+    margin-top: 0;
+}
+#resultadoHistorico p {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 14px;
+}
+button {
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 10px;
+}
+input[type="text"] {
+    width: calc(50% - 10px);
+    padding: 8px;
+    margin: 5px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button:focus, input[type="text"]:focus {
+    outline: none;
+}
+.modal-content {
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    background-color: white;
+}
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-modal:hover, .close-modal:focus {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+.search-fuel-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.search-fuel-btn:hover {
+    background-color: #0056b3;
+}
+.resultado-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    background-color: white;
+}
+.consultar-media-btn {
+    background-color: #4CAF50; /*CorFundo*/
+    border: none; /*NOborda*/
+    color: white; /*Cor text*/
+    padding: 15px 32px; /*Espaçmnt inter*/
+    text-align: center; /*Text centralizd*/
+    text-decoration: none; /*Remov sublinhd*/
+    display: inline-block; /*Show bloc inline*/
+    font-size: 16px; /*Tamanh font*/
+    margin: 4px 2px; /*Margm*/
+    transition-duration: 0.4s; /*Duraç transiç*/
+    cursor: pointer; /*Cursor pointer*/
+    border-radius: 8px; /*Canto arredondad*/
+}
+.consultar-media-btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+.cadastrar-abastecimento-btn {
+    background-color: #4CAF50; /*CorFundo*/
+    border: none; /*NObord*/
+    color: white; /*Cor text*/
+    padding: 15px 32px; /*Espaçmnt inter*/
+    text-align: center; /*Text centralizd*/
+    text-decoration: none; /*Remov sublinhad*/
+    display: inline-block; /*Mostr bloc inline*/
+    font-size: 16px; /*Siz font*/
+    margin: 4px 2px; /*Margm*/
+    transition-duration: 0.4s; /*Duraç transiçã*/
+    cursor: pointer; /*Cursor pointer*/
+    border-radius: 8px; /*Canto arredondd*/
+}
+.cadastrar-abastecimento-btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    background-color: white;
+}
+/*Style p/os camps d'entrad no modal*/
+.modal-content input[type="text"], 
+.modal-content input[type="date"] {
+    width: 100%; /*Largur complet*/
+    padding: 12px 20px; /*Espaçament inter*/
+    margin: 8px 0; /*Margm*/
+    display: inline-block; /*Show como bloc inline*/
+    border: 1px solid #ccc; /*Bord*/
+    border-radius: 4px; /*Cantos arredondds*/
+    box-sizing: border-box; /*BoxSizing*/
+}
+.modal-content button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.modal-content button:hover {
+    background-color: #45a049;
+}
+.anomalia-detectada-btn {
+    background-color: #FF0000; /*Cor d'fund vermelh*/
+    color: #FFFF00; /*Cor d'text amarel*/
+    padding: 15px 32px; /*Espaçament inter*/
+    text-align: center; /*Text centralizd*/
+    text-decoration: none; /*Remov sublinhad*/
+    display: inline-block; /*Show like bloc inline*/
+    font-size: 16px; /*Tamanh font*/
+    margin: 4px 2px; /*Margm*/
+    transition-duration: 0.4s; /*Duraç d'transiç*/
+    cursor: pointer; /*Cursor pointer*/
+    border-radius: 8px; /*Canto arredondd*/
+}
+.anomalia-detectada-btn:hover {
+    background-color: #FFB6C1; /*Alt cor d'fund aopassar mouse*/
+    color: #000000; /*Alt cor d'text aopassar mouse*/
+}

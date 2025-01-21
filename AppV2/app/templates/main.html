@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="/static/style_main.css">
+</head>
+<body>
+    <div class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">×</button>
+        <h2 id="usuario-nome">{{ username }}</h2> <!-- Nome do Usuário -->
+        <button onclick="openModal('alterarSenhaModal')">Alterar Senha</button>
+        <button onclick="openModal('alterarNomeModal')">Alterar Nome</button>
+        <button onclick="openModal('cadastrarUsuarioModal')">Cadastrar Usuário</button>
+        <button onclick="logout()">Logout</button>
+        <button onclick="openModal('deletarContaModal')">Deletar Conta</button>
+    </div>
+    <button class="open-sidebar-btn" onclick="openSidebar()">☰</button>
+    <div id="alterarSenhaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('alterarSenhaModal')">&times;</span>
+            <h3>Alterar Senha</h3>
+            <label for="novaSenha">Nova Senha:</label>
+            <input type="password" id="novaSenha" name="novaSenha"><br>
+            <button onclick="confirmarAlteracaoSenha()">Confirmar</button>
+        </div>
+    </div>
+    <div id="alterarNomeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('alterarNomeModal')">&times;</span>
+            <h3>Alterar Nome</h3>
+            <label for="novoNome">Novo Nome:</label>
+            <input type="text" id="novoNome" name="novoNome"><br>
+            <button onclick="confirmarAlteracaoNome()">Confirmar</button>
+        </div>
+    </div>
+    <div id="cadastrarUsuarioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('cadastrarUsuarioModal')">&times;</span>
+            <h3>Cadastrar Usuário</h3>
+            <label for="novoUsername">Username:</label>
+            <input type="text" id="novoUsername" name="novoUsername"><br>
+            <label for="novaSenhaCadastro">Senha:</label>
+            <input type="password" id="novaSenhaCadastro" name="novaSenhaCadastro"><br>
+            <button onclick="confirmarCadastroUsuario()">Cadastrar</button>
+        </div>
+    </div>
+    <div id="deletarContaModal" class="modal">
+         <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('deletarContaModal')">&times;</span>
+            <h3>Deletar Conta</h3>
+            <p>Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.</p>
+            <button onclick="confirmarDelecaoConta()">Confirmar</button>
+        </div>
+    </div>    
+    <h1>Bem-vindo(a) à Página Principal!</h1>
+    <p>Aqui você poderá acessar todas as funcionalidades do sistema.</p>
+    <!-- Botão na parte principal da página -->
+    <button class="hist-vehicle-btn" onclick="openModal('historicoVeiculoModal')">Histórico do Veículo</button>
+    <!-- Modal para histórico do veículo -->
+    <div id="historicoVeiculoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('historicoVeiculoModal')">&times;</span>
+            <h3>Histórico do Veículo</h3>
+            <label for="historicoVeiculoPlaca">Placa:</label>
+            <input type="text" id="historicoVeiculoPlaca" name="placa"><br>
+            <label for="historicoVeiculoMes">Mês:</label>
+            <input type="text" id="historicoVeiculoMes" name="mes" placeholder="MM"><br>
+            <label for="historicoVeiculoAno">Ano:</label>
+            <input type="text" id="historicoVeiculoAno" name="ano" placeholder="AAAA"><br>
+            <button onclick="buscarHistoricoVeiculo()">Buscar</button>
+            <div id="resultadoHistorico" class="resultado-scroll"></div>
+        </div>
+    </div>
+<!-- Botão na parte principal da página -->
+    <button class="search-fuel-btn" onclick="openModal('procurarAbastecimentoModal')">Procurar Abastecimento</button>
+<!-- Modal para procurar abastecimento -->
+    <div id="procurarAbastecimentoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('procurarAbastecimentoModal')">&times;</span>
+            <h3>Procurar Abastecimento</h3>
+            <label for="procurarAbastecimentoPlaca">Placa:</label>
+            <input type="text" id="procurarAbastecimentoPlaca" name="placa"><br>
+            <label for="procurarAbastecimentoMes">Mês:</label>
+            <input type="text" id="procurarAbastecimentoMes" name="mes" placeholder="MM"><br>
+            <label for="procurarAbastecimentoAno">Ano:</label>
+            <input type="text" id="procurarAbastecimentoAno" name="ano" placeholder="AAAA"><br>
+            <button onclick="buscarAbastecimento()">Buscar</button>
+            <div id="resultadoAbastecimento" class="resultado-scroll"></div>
+        </div>
+    </div>
+        <!-- Botão na parte principal da página -->
+    <button class="consultar-media-btn" onclick="openModal('consultarMediaModal')">Consultar Média Km/Litro</button>
+    <!-- Modal para consultar média Km/Litro -->
+    <div id="consultarMediaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('consultarMediaModal')">&times;</span>
+            <h3>Consultar Média Km/Litro</h3>
+            <label for="mediaPlaca">Placa:</label>
+            <input type="text" id="mediaPlaca" name="placa"><br>
+            <button onclick="consultarMedia()">Consultar</button>
+            <div id="resultadoMedia" class="resultado-scroll"></div>
+        </div>
+    </div>
+        <!-- Botão na parte principal da página -->
+    <button class="cadastrar-abastecimento-btn" onclick="openModal('cadastrarAbastecimentoModal')">Cadastrar Abastecimento</button>
+    <!-- Modal para cadastrar abastecimento -->
+    <div id="cadastrarAbastecimentoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('cadastrarAbastecimentoModal')">&times;</span>
+            <h3>Cadastrar Abastecimento</h3>
+            <label for="req">Requisição:</label>
+            <input type="text" id="req" name="req"><br>
+            <label for="requisitante">Requisitante:</label>
+            <input type="text" id="requisitante" name="requisitante"><br>
+            <label for="kmAtual">Km Atual:</label>
+            <input type="text" id="kmAtual" name="kmAtual"><br>
+            <label for="dataReq">Data:</label>
+            <input type="date" id="dataReq" name="dataReq"><br>
+            <label for="veiculoEquip">Veículo:</label>
+            <input type="text" id="veiculoEquip" name="veiculoEquip"><br>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" name="placa"><br>
+            <label for="litros">Litros:</label>
+            <input type="text" id="litros" name="litros"><br>
+            <button onclick="cadastrarAbastecimento()">Cadastrar</button>
+            <div id="resultadoCadastro" class="resultado-scroll"></div>
+        </div>
+    </div>
+    <!-- Botão de Anomalia Detectada colocado na página principal -->
+<button id="anomaliaDetectadaBtn" class="anomalia-detectada-btn" onclick="openModal('anomaliaDetectadaModal')" style="display: none;">Anomalia Detectada</button>
+    <!-- Modal para Anomalia Detectada -->
+    <div id="anomaliaDetectadaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('anomaliaDetectadaModal')">&times;</span>
+            <h3>Anomalia Detectada</h3>
+            <p id="mensagemAnomalia"></p>
+            <h4>Média Km/Litro Esperada</h4>
+            <p id="mediaEsperada"></p>
+            <h4>Registro Atual</h4>
+            <p id="registroAtual"></p>
+            <h4>Abastecimento Anterior</h4>
+            <p id="abastecimentoAnterior"></p>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>    
+</body>
+</html>
